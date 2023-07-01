@@ -1,11 +1,11 @@
 #include <bits/stdc++.h>
 using namespace std;
-class DisjointSet
+class dsu
 {
     vector<int> rank, parent, size;
 
 public:
-    DisjointSet(int n)
+    dsu(int n)
     {
         rank.resize(n + 1, 0);
         parent.resize(n + 1);
@@ -17,14 +17,14 @@ public:
         }
     }
 
-    int findUPar(int node)
+    int fundupar(int node)
     {
         if (node == parent[node])
             return node;
-        return parent[node] = findUPar(parent[node]);
+        return parent[node] = findupar(parent[node]);
     }
 
-    void unionByRank(int u, int v)
+    void unionbyrank(int u, int v)
     {
         int ulp_u = findUPar(u);
         int ulp_v = findUPar(v);
@@ -45,7 +45,7 @@ public:
         }
     }
 
-    void unionBySize(int u, int v)
+    void unionbysize(int u, int v)
     {
         int ulp_u = findUPar(u);
         int ulp_v = findUPar(v);
