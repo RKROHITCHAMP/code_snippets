@@ -1,10 +1,11 @@
 #include <bits/stdc++.h>
 using namespace std;
-class dsu
+  class dsu
 {
-    vector<int> rank, parent, size;
+  
 
 public:
+  vector<int> rank, parent, size;
     dsu(int n)
     {
         rank.resize(n + 1, 0);
@@ -17,7 +18,7 @@ public:
         }
     }
 
-    int fundupar(int node)
+    int findupar(int node)
     {
         if (node == parent[node])
             return node;
@@ -26,8 +27,8 @@ public:
 
     void unionbyrank(int u, int v)
     {
-        int ulp_u = findUPar(u);
-        int ulp_v = findUPar(v);
+        int ulp_u = findupar(u);
+        int ulp_v = findupar(v);
         if (ulp_u == ulp_v)
             return;
         if (rank[ulp_u] < rank[ulp_v])
@@ -47,8 +48,8 @@ public:
 
     void unionbysize(int u, int v)
     {
-        int ulp_u = findUPar(u);
-        int ulp_v = findUPar(v);
+        int ulp_u = findupar(u);
+        int ulp_v = findupar(v);
         if (ulp_u == ulp_v)
             return;
         if (size[ulp_u] < size[ulp_v])
